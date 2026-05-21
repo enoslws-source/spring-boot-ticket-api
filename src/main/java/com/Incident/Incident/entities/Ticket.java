@@ -20,6 +20,9 @@ public class Ticket {
     @ManyToOne
     private Employee employee;
 
+    @Column(name = "status")
+    private Status status = Status.BACKLOG;
+
 
     public Ticket(){
     }
@@ -41,5 +44,11 @@ public class Ticket {
     }
     public String getTicketDescription(){
         return ticketDescription;
+    }
+    public void setStatus(Status status){
+        this.status = status;
+    }
+    public Status getStatus(){
+        return status;
     }
 }

@@ -3,6 +3,7 @@ package com.Incident.Incident.services;
 import com.Incident.Incident.dao.EmployeeRepository;
 import com.Incident.Incident.dao.TicketRepository;
 import com.Incident.Incident.entities.Employee;
+import com.Incident.Incident.entities.Status;
 import com.Incident.Incident.entities.Ticket;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -59,6 +60,11 @@ public class EmployeeImplement implements EmployeeService {
     @Override
     public ResponseEntity<String> addTicket(long id, Ticket ticket){
     Employee employee1 = employeeRepository.findById(id).orElseThrow();
+
+    ticket = ticketRepository.findById(ticket.getId()).orElseThrow();
+    ticket.setStatus(Status.ASSIGNED);
+    ticketRepository.save(ticket);
+
     employee1.addTicket(ticket);
     employeeRepository.save(employee1);
 
