@@ -16,6 +16,10 @@ public class Ticket {
     @Column(name = "ticketDescription")
     private String ticketDescription;
 
+    @JoinColumn(name = "employee")
+    @ManyToOne
+    private Employee employee;
+
 
     public Ticket(){
     }

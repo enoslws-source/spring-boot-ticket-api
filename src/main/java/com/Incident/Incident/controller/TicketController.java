@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/ticket")
+@RequestMapping("/ticket")
 public class TicketController {
 
     @Autowired
@@ -30,7 +30,7 @@ public class TicketController {
         return ticketService.findAll();
     }
 
-    @PostMapping("/{id}")
+    @PostMapping
     public Ticket save(@RequestBody Ticket ticket){
         return ticketService.save(ticket);
     }
